@@ -1,11 +1,14 @@
 const faker = require('faker');
 const MongoClient = require('mongodb').MongoClient;
 
+let _client;
+
 MongoClient.connect('mongodb://localhost/reviews',{
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(
   (client) => {
+    _client = client;
     const db = client.db('reviews');
     const reviewsCollection = db.collection('reviews');
     let reviews = [];
@@ -36,8 +39,10 @@ MongoClient.connect('mongodb://localhost/reviews',{
     reviewsCollection.insertMany(reviews)
     .then(res => {
       console.log(`DB successfully seeded with ${res.result.n} entries!`);
+      _client.close();
     })
   })
   .catch(err => {
     console.log('Unsuccessful seeding!:', err);
+    _client.close();
   });
