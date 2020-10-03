@@ -18,9 +18,7 @@ app.use(morgan('dev'));
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
-// Server test
+// Server Confirmation
 app.use('/test', (req, res) => {
     res.send('3-2-1 testing! Server is serving!');
 })
-
-

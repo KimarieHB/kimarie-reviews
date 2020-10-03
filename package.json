@@ -11,7 +11,9 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "faker": "^5.1.0"
+    "faker": "^5.1.0",
+    "nodemon": "^2.0.4",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
   },
   "scripts": {
     "start": "nodemon server/index.js",

@@ -14,25 +14,22 @@ MongoClient.connect('mongodb://localhost/reviews',{
     let reviews = [];
 
     for (let i = 1; i < 301; i++) { //301
-      let rank;
+      let rated;
       let percentage = Math.floor(Math.random() * 28) + 72;
 
       if (percentage >= 80) {
-        rank = 'Very Positive';
+        rated = 'Very Positive';
       } else {
-        rank = 'Mostly Positive';
+        rated = 'Mostly Positive';
       }
 
       let fakeReview = {
         game_id: i,
-        review:
-          {
-            top_review: faker.lorem.paragraph(),
-            percent: percentage.toString() + '%',
-            quantity: faker.random.number(),
-            general_rank: rank,
-            source: 'Steam'
-          }
+        top_review: faker.lorem.paragraph(),
+        percent: percentage.toString() + '%',
+        quantity: faker.random.number(),
+        rating: rated,
+        source: 'Steam'
       }
       reviews.push(fakeReview);
     }
